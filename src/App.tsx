@@ -1,26 +1,15 @@
-import { Button, Stack, Box, Typography } from '@mui/material';
-import useStore from './store';
+import { ThemeProvider } from '@mui/material/styles';
+import { Stack } from '@mui/material';
+import { mainLandingTheme } from './theme/mainLandingTheme';
+import HeaderSection from './components/Pages/HeaderSection';
 
 function App() {
-  const { count, increase } = useStore();
-
   return (
-    <>
-      <Stack
-        width="100vw"
-        height="100vh"
-        justifyContent="center"
-        alignItems="center"
-        spacing={3}
-      >
-        <Box>
-          <Typography>Count: {count}</Typography>
-          <Button variant="contained" onClick={increase}>
-            Increase
-          </Button>
-        </Box>
+    <ThemeProvider theme={mainLandingTheme}>
+      <Stack width={'100%'} gap={'40px'}>
+        <HeaderSection />
       </Stack>
-    </>
+    </ThemeProvider>
   );
 }
 
