@@ -47,26 +47,29 @@ export default function HeaderSection() {
               flexDirection: 'row',
             }}
           >
-            <ListItem component={Link} href="#">
+            <ListItem component={Link} href="#main">
               <Typography variant="h4">Главная</Typography>
             </ListItem>
-            <ListItem component={Link} href="#">
+            <ListItem component={Link} href="#aboutme">
               <Typography variant="h4">Обо мне</Typography>
             </ListItem>
-            <ListItem component={Link} href="#">
+            <ListItem component={Link} href="#portfolio">
               <Typography variant="h4">Портфолио</Typography>
             </ListItem>
-            <ListItem component={Link} href="#">
-              <Typography variant="h4">Опыт</Typography>
+            <ListItem component={Link} href="#technologies">
+              <Typography variant="h4">Навыки</Typography>
             </ListItem>
-            <ListItem component={Link} href="#">
+            <ListItem component={Link} href="#career">
               <Typography variant="h4">Карьера</Typography>
             </ListItem>
-            <ListItem component={Link} href="#">
+            <ListItem component={Link} href="#recommendations">
               <Typography variant="h4">Рекомендации</Typography>
             </ListItem>
-            <ListItem component={Link} href="#">
+            <ListItem component={Link} href="#contacts">
               <Typography variant="h4">Контакты</Typography>
+            </ListItem>
+            <ListItem component={Link} href="#feedback">
+              <Typography variant="h4">Обратная связь</Typography>
             </ListItem>
           </List>
         </Stack>

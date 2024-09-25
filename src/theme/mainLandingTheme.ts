@@ -103,12 +103,38 @@ export const mainLandingTheme = createTheme({
       fontSize: '18px',
       textAlign: 'center',
       color: textGrey,
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        bottom: '-6px',
+        left: 0,
+        width: '100%',
+        height: '3px',
+        backgroundColor: 'rgba(123, 74, 226, 0.5)',
+        transform: 'scale(0, 1)',
+        transition: 'transform .3s ease',
+      },
+      '&:hover::before': {
+        transform: 'scale(1, 1)',
+      },
       '&:hover': {
         fontWeight: 700,
         color: textViolet,
         transition: 'all .3s ease-in-out',
       },
     },
+    h5: {
+      fontFamily: 'Raleway',
+      fontWeight: '700',
+      fontSize: '20px',
+      textAlign: 'center',
+      color: 'rgba(123, 74, 226, 0.5)',
+      [breakpoints.breakpoints.down('md')]: {
+        fontSize: '14px',
+      },
+    },
+
     subtitle1: {
       fontFamily: 'Raleway',
       fontSize: '16px',
