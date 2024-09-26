@@ -1,6 +1,6 @@
 import { Stack, ThemeProvider } from '@mui/material';
 import { mainLandingTheme } from '../../theme/mainLandingTheme';
-import Header from '../Pages/HeaderSection';
+import Header from '../pages/sections/HeaderSection';
 
 export default function MainLayout() {
   return (

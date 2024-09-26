@@ -8,7 +8,7 @@ import {
   CardContent,
 } from '@mui/material';
 
-import { useReviewsStore } from '../../store/ReviewsStore';
+import { useReviewsStore } from '../../../store/ReviewsStore';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -16,9 +16,9 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { Swiper as SwiperClass } from 'swiper';
 
-import Quotes from '../../media/icons/others/Quotes.svg';
-import ArrowRight from '../../media/icons/others/CaretRight.svg';
-import ArrowLeft from '../../media/icons/others/CaretLeft.svg';
+import Quotes from '../../../media/icons/others/Quotes.svg';
+import ArrowRight from '../../../media/icons/others/CaretRight.svg';
+import ArrowLeft from '../../../media/icons/others/CaretLeft.svg';
 
 export default function ReviewsSection() {
   const { reviews } = useReviewsStore();

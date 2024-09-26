@@ -1,8 +1,8 @@
 import Grid2 from '@mui/material/Grid2';
 import { Box, Container, Typography, Stack } from '@mui/material';
-import CodeIcon from '../../media/icons/others/CodeIcon.svg';
-import ProjectIcon from '../../media/icons/projects/ProjectsIcon.svg';
-import DesignIcon from '../../media/icons/design/DesignIcon2.svg';
+import CodeIcon from '../../../media/icons/others/CodeIcon.svg';
+import ProjectIcon from '../../../media/icons/projects/ProjectsIcon.svg';
+import DesignIcon from '../../../media/icons/design/DesignIcon2.svg';
 
 export default function ExperienceSection() {
   return (

@@ -1,5 +1,5 @@
 import { Stack, Box, Typography, List, ListItem, Link } from '@mui/material';
-import Logo from '../../media/icons/others/Logo.svg';
+import Logo from '../../../media/icons/others/Logo.svg';
 
 export default function HeaderSection() {
   return (

@@ -1,9 +1,9 @@
 import Grid2 from '@mui/material/Grid2';
 import { Box, Container, Typography, Stack, Link } from '@mui/material';
 
-import GitHub from '../../media/icons/contact/github.svg';
-import Avatar from '../../media/icons/me/AvatarAndIcons.svg';
-import ArrowDown from '../../media/icons/others/ArrowLineDown.svg';
+import GitHub from '../../../media/icons/contact/github.svg';
+import Avatar from '../../../media/icons/me/AvatarAndIcons.svg';
+import ArrowDown from '../../../media/icons/others/ArrowLineDown.svg';
 import { SiTelegram } from 'react-icons/si';
 import { FaSquareGitlab } from 'react-icons/fa6';
 

@@ -8,7 +8,7 @@ import {
   CardContent,
   Link,
 } from '@mui/material';
-import { useJobsAndStudyStore } from '../../store/JobsAndStudyStore';
+import { useJobsAndStudyStore } from '../../../store/JobsAndStudyStore';
 
 export default function JobsAndStudySection() {
   const { jobs, studies } = useJobsAndStudyStore();

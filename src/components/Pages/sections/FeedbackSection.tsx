@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 
 import { useState } from 'react';
-import { useRequestStore } from '../../store/RequestsStore';
+import { useRequestStore } from '../../../store/RequestsStore';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -37,11 +37,22 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // Добавляем заявку в Zustand
       addRequest(formData);
 
-      // Устанавливаем состояние успеха и открываем модальное окно
-      setIsSuccess(true);
+      const response = await fetch('http://localhost:5174/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+      } else {
+        setIsSuccess(false);
+      }
+
       setIsModalOpen(true);
 
       setFormData({

@@ -1,4 +1,5 @@
-import create from 'zustand';
+import { create, StateCreator } from 'zustand';
+import { persist, PersistOptions } from 'zustand/middleware';
 import { v4 as uuidv4 } from 'uuid';
 
 interface Request {
@@ -12,16 +13,32 @@ interface Request {
 interface RequestStore {
   requests: Request[];
   addRequest: (request: Omit<Request, 'id'>) => void;
+  removeRequest: (id: string) => void;
 }
 
-export const useRequestStore = create<RequestStore>((set) => ({
+const requestStore: StateCreator<RequestStore, [], [], RequestStore> = (
+  set
+) => ({
   requests: [],
   addRequest: (request: Omit<Request, 'id'>) => {
-    console.log('Добавляем запрос:', request);
     set((state) => {
       const newRequests = [...state.requests, { ...request, id: uuidv4() }];
-      console.log('Обновленное состояние:', newRequests);
+
       return { requests: newRequests };
     });
   },
-}));
+  removeRequest: (id: string) => {
+    set((state: RequestStore) => ({
+      requests: state.requests.filter((request) => request.id !== id),
+    }));
+  },
+});
+
+const persistOptions: PersistOptions<RequestStore> = {
+  name: 'requests-storage',
+  getStorage: () => localStorage,
+};
+
+export const useRequestStore = create<RequestStore>()(
+  persist(requestStore, persistOptions)
+);

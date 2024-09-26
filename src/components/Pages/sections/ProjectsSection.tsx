@@ -9,7 +9,7 @@ import {
   CardContent,
 } from '@mui/material';
 
-import { useProjectStore } from '../../store/ProjectStore';
+import { useProjectStore } from '../../../store/ProjectStore';
 
 export default function ProjectsSection() {
   const projects = useProjectStore((state) => state.projects);

@@ -1,13 +1,20 @@
-import { useEffect } from 'react';
-import { Container, Typography, List, ListItem, Box } from '@mui/material';
+import {
+  Container,
+  Typography,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@mui/material';
 import { useRequestStore } from '../../store/RequestsStore';
 
-export default function AdmilPanelPage() {
+export default function AdminPanelPage() {
   const requests = useRequestStore((state) => state.requests);
-
-  useEffect(() => {
-    console.log('Requests updated:', requests);
-  }, [requests]);
+  const removeRequest = useRequestStore((state) => state.removeRequest);
 
   return (
     <Container
@@ -20,22 +27,54 @@ export default function AdmilPanelPage() {
       }}
     >
       <Typography variant="h2">Панель администратора</Typography>
-      <List sx={{ width: '100%', maxWidth: '600px', marginTop: '20px' }}>
-        {requests.map((request) => (
-          <ListItem key={request.id} sx={{ marginBottom: '20px' }}>
-            <Box>
-              <Typography variant="h6">Имя: {request.name}</Typography>
-              <Typography variant="body1">Email: {request.email}</Typography>
-              <Typography variant="body1">
-                Описание: {request.description}
-              </Typography>
-              <Typography variant="body1">
-                Способ связи: {request.contactMethod}
-              </Typography>
-            </Box>
-          </ListItem>
-        ))}
-      </List>
+      <TableContainer
+        component={Paper}
+        sx={{
+          maxWidth: '600px',
+          marginTop: '20px',
+          backgroundColor: '#ffffff80',
+        }}
+      >
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Имя</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Описание</TableCell>
+              <TableCell>Способ связи</TableCell>
+              <TableCell>Удалить заявку</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {requests.map((request) => (
+              <TableRow key={request.id}>
+                <TableCell>{request.name}</TableCell>
+                <TableCell>{request.email}</TableCell>
+                <TableCell>{request.description}</TableCell>
+                <TableCell>{request.contactMethod}</TableCell>
+                <TableCell>
+                  <Button
+                    sx={{
+                      width: '100px',
+                      height: '30px',
+                      fontSize: '10px',
+                      color: 'white',
+                      border: '1px solid rgba(123, 74, 226, 0.5)',
+                      borderRadius: '16px',
+                      '&:hover': {
+                        backgroundColor: '#7B4AE2',
+                      },
+                    }}
+                    onClick={() => removeRequest(request.id)}
+                  >
+                    Удалить
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Container>
   );
 }

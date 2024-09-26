@@ -1,10 +1,7 @@
 import { Box, Container, Typography, Stack } from '@mui/material';
-import { useIconStore } from '../../store/TechnologiesStore';
+import { icons, iconsRaraly } from '../../../data/Technologies';
 
 export default function TechnologiesSection() {
-  const icons = useIconStore((state) => state.icons);
-  const iconsRaraly = useIconStore((state) => state.iconsRaraly);
-
   return (
     <Container
       sx={{

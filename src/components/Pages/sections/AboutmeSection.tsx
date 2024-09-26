@@ -1,7 +1,7 @@
 import Grid2 from '@mui/material/Grid2';
 import { Box, Container, Typography, Stack } from '@mui/material';
 
-import Avatar from '../../media/icons/me/AvatarAndIcons.svg';
+import Avatar from '../../../media/icons/me/AvatarAndIcons.svg';
 
 export default function AboutmeSection() {
   return (

@@ -1,9 +1,9 @@
 import { Box, Container, Typography, Stack, Link } from '@mui/material';
 
 import { SiTelegram } from 'react-icons/si';
-import Email from '../../media/icons/contact/email.svg';
-import Copy from '../../media/icons/contact/CopySimple.svg';
-import ArrowUp from '../../media/icons/others/ArrowUp.svg';
+import Email from '../../../media/icons/contact/email.svg';
+import Copy from '../../../media/icons/contact/CopySimple.svg';
+import ArrowUp from '../../../media/icons/others/ArrowUp.svg';
 
 export default function ContactSection() {
   const scrollToTop = () => {
