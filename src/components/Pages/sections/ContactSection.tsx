@@ -1,4 +1,12 @@
-import { Box, Container, Typography, Stack, Link } from '@mui/material';
+import {
+  Box,
+  Container,
+  Typography,
+  Stack,
+  Link,
+  useMediaQuery,
+} from '@mui/material';
+import { mainLandingTheme } from '../../../theme/mainLandingTheme';
 
 import { SiTelegram } from 'react-icons/si';
 import Email from '../../../media/icons/contact/email.svg';
@@ -6,6 +14,12 @@ import Copy from '../../../media/icons/contact/CopySimple.svg';
 import ArrowUp from '../../../media/icons/others/ArrowUp.svg';
 
 export default function ContactSection() {
+  const isSmallScreen = useMediaQuery(mainLandingTheme.breakpoints.down('md'));
+
+  let size = 22;
+  if (isSmallScreen) {
+    size = 17;
+  }
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -30,8 +44,15 @@ export default function ContactSection() {
           <Typography variant="h5">📬 Контакты</Typography>
         </Box>
 
-        <Typography variant="h1" sx={{ marginTop: '28px' }}>
-          Пишите на почту или в телеграм!
+        <Typography
+          variant="h1"
+          sx={{
+            marginTop: '28px',
+            fontSize: { xs: '34px', md: '43px', lg: '48px' },
+            textAlign: 'center',
+          }}
+        >
+          Пишите на почту или{isSmallScreen && <br />} в Telegram!
         </Typography>
       </Stack>
 
@@ -39,13 +60,22 @@ export default function ContactSection() {
         <Box
           sx={{
             position: 'absolute',
-            left: 'calc(24% + 10px)',
+            top: {
+              xs: 'calc(50% - 75px)',
+              md: 'calc(45% + 10px)',
+              lg: 'calc(24% + 10px)',
+            },
+            left: {
+              xs: 'calc(50% - 90px)',
+              md: 'calc(15% - 35px)',
+              lg: 'calc(24% + 10px)',
+            },
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             border: '1px solid rgba(123, 74, 226, 0.5)',
-            borderRadius: '16px',
-            width: '253px',
+            borderRadius: { xs: '8px', md: '16px' },
+            width: { xs: '178px', md: '253px' },
             height: '44px',
             '&:hover': {
               borderColor: '#7B4AE2',
@@ -77,14 +107,14 @@ export default function ContactSection() {
               sx={{
                 fontFamily: 'Raleway',
                 fontWeight: '600',
-                fontSize: '16px',
+                fontSize: { xs: '14px', md: '16px' },
               }}
             >
-              Написать в телеграм
+              Написать в Telegram
             </Typography>
 
             <SiTelegram
-              size={22}
+              size={size}
               color="rgba(123, 74, 226, 0.5)"
               style={{ marginLeft: '8px' }}
             />
@@ -101,8 +131,8 @@ export default function ContactSection() {
           <Box
             sx={{
               position: 'absolute',
-              top: 'calc(15% - 60px)',
-              left: 'calc(50% + 10px)',
+              top: { xs: 'calc(25% - 10px)', md: 'calc(15% - 60px)' },
+              left: { xs: 'calc(50% - 105px)', md: 'calc(50% + 10px)' },
               display: 'flex',
               alignItems: 'center',
               flexDirection: 'column',
@@ -132,6 +162,7 @@ export default function ContactSection() {
           display: 'flex',
           justifyContent: 'center',
           direction: 'row',
+          cursor: 'pointer',
         }}
         onClick={scrollToTop}
       >

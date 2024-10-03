@@ -8,11 +8,12 @@ interface Request {
   email: string;
   description?: string;
   contactMethod: string;
+  timestamp: string;
 }
 
 interface RequestStore {
   requests: Request[];
-  addRequest: (request: Omit<Request, 'id'>) => void;
+  addRequest: (request: Omit<Request, 'id' | 'timestamp'>) => void;
   removeRequest: (id: string) => void;
 }
 
@@ -20,12 +21,34 @@ const requestStore: StateCreator<RequestStore, [], [], RequestStore> = (
   set
 ) => ({
   requests: [],
-  addRequest: (request: Omit<Request, 'id'>) => {
-    set((state) => {
-      const newRequests = [...state.requests, { ...request, id: uuidv4() }];
+  addRequest: async (request: Omit<Request, 'id' | 'timestamp'>) => {
+    const newRequest = {
+      ...request,
+      id: uuidv4(),
+      timestamp: new Date().toISOString(),
+    };
 
-      return { requests: newRequests };
-    });
+    try {
+      const response = await fetch('http://localhost:5174/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRequest),
+      });
+
+      if (!response.ok) {
+        throw new Error('Ошибка при отправке запроса');
+      }
+
+      // Добавляем запрос в состояние, только если отправка успешна
+      set((state) => ({
+        requests: [...state.requests, newRequest],
+      }));
+    } catch (error) {
+      console.error('Ошибка при отправке:', error);
+      throw error;
+    }
   },
   removeRequest: (id: string) => {
     set((state: RequestStore) => ({

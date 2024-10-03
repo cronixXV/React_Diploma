@@ -26,34 +26,6 @@ declare module '@mui/material/Button' {
   }
 }
 
-// declare module '@mui/material/styles' {
-//   interface TypographyVariants {
-//     subtitle1: React.CSSProperties;
-//     subtitle2: React.CSSProperties;
-//     h1: React.CSSProperties;
-//     h2: React.CSSProperties;
-//     h3: React.CSSProperties;
-//   }
-
-//   interface TypographyVariantsOptions {
-//     subtitle1: React.CSSProperties;
-//     subtitle2: React.CSSProperties;
-//     h1: React.CSSProperties;
-//     h2: React.CSSProperties;
-//     h3: React.CSSProperties;
-//   }
-// }
-
-// declare module '@mui/material/Typography' {
-//   interface TypographyPropsVariantOverrides {
-//     subtitle1: true;
-//     subtitle2: true;
-//     h1: true;
-//     h2: true;
-//     h3: true;
-//   }
-// }
-
 export const mainLandingTheme = createTheme({
   ...breakpoints,
   palette: {
@@ -72,7 +44,7 @@ export const mainLandingTheme = createTheme({
       fontSize: '48px',
       lineHeight: '120%',
       [breakpoints.breakpoints.down('md')]: {
-        fontSize: '24px',
+        fontSize: '34px',
       },
     },
     h2: {
@@ -93,7 +65,7 @@ export const mainLandingTheme = createTheme({
       textAlign: 'center',
       color: textGrey,
       [breakpoints.breakpoints.down('md')]: {
-        fontSize: '14px',
+        fontSize: '18px',
         textAlign: 'justify',
       },
     },
@@ -131,7 +103,7 @@ export const mainLandingTheme = createTheme({
       textAlign: 'center',
       color: 'rgba(123, 74, 226, 0.5)',
       [breakpoints.breakpoints.down('md')]: {
-        fontSize: '14px',
+        fontSize: '18px',
       },
     },
 
@@ -140,6 +112,9 @@ export const mainLandingTheme = createTheme({
       fontSize: '16px',
       fontWeight: 400,
       color: textGrey,
+      // [breakpoints.breakpoints.down('lg')]: {
+      //   fontSize: '12px',
+      // },
       [breakpoints.breakpoints.down('md')]: {
         fontSize: '14px',
       },

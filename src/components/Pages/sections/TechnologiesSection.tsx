@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Stack } from '@mui/material';
+
 import { icons, iconsRaraly } from '../../../data/Technologies';
 
 export default function TechnologiesSection() {
@@ -31,7 +32,10 @@ export default function TechnologiesSection() {
         </Box>
 
         <Box>
-          <Typography variant="h1" sx={{ marginTop: '28px' }}>
+          <Typography
+            variant="h1"
+            sx={{ marginTop: '28px', whiteSpace: 'nowrap' }}
+          >
             Основные технологии
           </Typography>
         </Box>
@@ -41,10 +45,15 @@ export default function TechnologiesSection() {
             Технологии, которыми я пользуюсь ежедневно
           </Typography>
 
-          <Box mt={'40px'} display="flex" gap="20px">
+          <Box
+            mt={'40px'}
+            display="flex"
+            gap={{ xs: '30px', md: '20px' }}
+            flexWrap={{ xs: 'wrap', md: 'nowrap' }}
+          >
             {icons.map((icon) => (
-              <Box key={icon.id}>
-                <img src={icon.url} alt={icon.name} style={{ width: '50px' }} />
+              <Box key={icon.id} sx={{ width: { xs: '44px', md: '64px' } }}>
+                <img src={icon.url} alt={icon.name} />
               </Box>
             ))}
           </Box>
@@ -55,10 +64,19 @@ export default function TechnologiesSection() {
             Другие технологии, с которыми я работаю
           </Typography>
 
-          <Box mt={'40px'} display="flex" gap="20px">
+          <Box
+            mt={'40px'}
+            display="flex"
+            gap={{ xs: '30px', md: '20px' }}
+            flexWrap={{ xs: 'wrap', md: 'nowrap' }}
+          >
             {iconsRaraly.map((icon) => (
-              <Box key={icon.id} textAlign="center">
-                <img src={icon.url} alt={icon.name} style={{ width: '50px' }} />
+              <Box
+                key={icon.id}
+                textAlign="center"
+                sx={{ width: { xs: '38px', md: '64px' } }}
+              >
+                <img src={icon.url} alt={icon.name} />
               </Box>
             ))}
           </Box>

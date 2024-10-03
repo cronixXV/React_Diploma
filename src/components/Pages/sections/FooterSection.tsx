@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Stack, Link } from '@mui/material';
-import { SiTelegram } from 'react-icons/si';
 
+import { SiTelegram } from 'react-icons/si';
 import { MdEmail } from 'react-icons/md';
 
 export default function FooterSection() {
@@ -8,7 +8,7 @@ export default function FooterSection() {
     <Container
       sx={{
         minHeight: '88px',
-        width: '100%',
+        minWidth: '100%',
         margin: '0 !important',
         backgroundColor: 'rgba(123, 74, 226, 0.1)',
         display: 'flex',
@@ -18,11 +18,17 @@ export default function FooterSection() {
       }}
     >
       <Stack
-        direction="row"
+        direction={{ xs: 'column', lg: 'row' }}
         alignItems="center"
         sx={{ width: '100%', maxWidth: '1200px', position: 'relative' }}
       >
-        <Box sx={{ flexGrow: 1 }}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: { xs: 'calc(50% + 10px)', lg: 'calc(30% - 10px)' },
+            flexGrow: 1,
+          }}
+        >
           <Typography variant="subtitle1">
             Сайт-портфолио© Груздев Егор · 2024
           </Typography>
@@ -35,6 +41,7 @@ export default function FooterSection() {
           gap={2}
           sx={{
             position: 'absolute',
+            top: { xs: 'calc(50% - 30px)', lg: 'calc(30% - 10px)' },
             left: '50%',
             transform: 'translateX(-50%)',
           }}

@@ -21,6 +21,8 @@ interface JobsAndStudyStore {
   studies: Study[];
   addJob: (job: Job) => void;
   addStudy: (study: Study) => void;
+  removeJob: (id: number) => void;
+  removeStudy: (id: number) => void;
 }
 
 export const useJobsAndStudyStore = create<JobsAndStudyStore>((set) => ({
@@ -29,7 +31,7 @@ export const useJobsAndStudyStore = create<JobsAndStudyStore>((set) => ({
       id: 1,
       title: 'MP.TOOLS/Твой склад',
       description:
-        'Должность: Frontend Developer. Разработка нового функционала для веб-приложения с использованием React, JavaScript, Typescript, а также с помощью других технологий, таких как Redux. Верстка с использованием MUI',
+        'Должность: Frontend Developer. Разработка нового функционала для веб-приложения с использованием React, JavaScript, Typescript, Redux. Верстка с использованием MUI',
       date: 'Апрель/2024 · Настоящее время',
       url: 'https://mp.tools/',
     },
@@ -62,4 +64,10 @@ export const useJobsAndStudyStore = create<JobsAndStudyStore>((set) => ({
   ],
   addJob: (job) => set((state) => ({ jobs: [...state.jobs, job] })),
   addStudy: (study) => set((state) => ({ studies: [...state.studies, study] })),
+  removeJob: (id) =>
+    set((state) => ({ jobs: state.jobs.filter((job) => job.id !== id) })),
+  removeStudy: (id) =>
+    set((state) => ({
+      studies: state.studies.filter((study) => study.id !== id),
+    })),
 }));

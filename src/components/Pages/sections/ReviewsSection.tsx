@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+
 import {
   Box,
   Container,
@@ -7,13 +8,14 @@ import {
   Card,
   CardContent,
 } from '@mui/material';
+import { mainLandingTheme } from '../../../theme/mainLandingTheme';
 
 import { useReviewsStore } from '../../../store/ReviewsStore';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Mousewheel } from 'swiper/modules';
 import { Swiper as SwiperClass } from 'swiper';
 
 import Quotes from '../../../media/icons/others/Quotes.svg';
@@ -78,7 +80,7 @@ export default function ReviewsSection() {
         >
           <Box
             sx={{
-              display: 'flex',
+              display: { xs: 'none', md: 'flex' },
               justifyContent: 'center',
               alignItems: 'center',
               border: '1px solid rgba(123, 74, 226, 0.5)',
@@ -97,7 +99,7 @@ export default function ReviewsSection() {
 
           <Box
             sx={{
-              display: 'flex',
+              display: { xs: 'none', md: 'flex' },
               justifyContent: 'center',
               alignItems: 'center',
               border: '1px solid rgba(123, 74, 226, 0.5)',
@@ -119,18 +121,36 @@ export default function ReviewsSection() {
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
-          modules={[Navigation]}
+          modules={[Navigation, Mousewheel]}
           slidesPerView={2}
           spaceBetween={20}
           loop={true}
+          breakpoints={{
+            [mainLandingTheme.breakpoints.values.xs]: {
+              slidesPerView: 1,
+              mousewheel: true,
+            },
+            [mainLandingTheme.breakpoints.values.sm]: {
+              slidesPerView: 1,
+              mousewheel: true,
+            },
+            [mainLandingTheme.breakpoints.values.md]: {
+              slidesPerView: 2,
+              mousewheel: false,
+            },
+            [mainLandingTheme.breakpoints.values.lg]: {
+              slidesPerView: 2,
+              mousewheel: false,
+            },
+          }}
           style={{ width: '100%', marginTop: '20px' }}
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id}>
               <Card
                 sx={{
-                  width: '500px',
-                  height: '295px',
+                  width: { xs: '298px', md: '280px', lg: '530px' },
+                  height: { xs: '271px', md: '355px', lg: '295px' },
                   '&:hover': {
                     backgroundColor: 'rgba(123, 74, 226, 0.10)',
                   },

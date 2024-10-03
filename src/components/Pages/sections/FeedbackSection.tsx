@@ -12,7 +12,16 @@ import {
 } from '@mui/material';
 
 import { useState } from 'react';
+import { z } from 'zod';
 import { useRequestStore } from '../../../store/RequestsStore';
+
+//форма валидации zod
+const formSchema = z.object({
+  name: z.string().min(3, 'Имя обязательно'),
+  email: z.string().email('Неверный формат email'),
+  description: z.string().optional(),
+  contactMethod: z.string().min(2, 'Способ связи обязателен'),
+});
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -24,6 +33,7 @@ export default function ContactForm() {
 
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formErrors, setFormErrors] = useState<string | null>(null);
 
   const addRequest = useRequestStore((state) => state.addRequest);
 
@@ -36,36 +46,33 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    //Валидация формы
+    const validationResult = formSchema.safeParse(formData);
+    if (!validationResult.success) {
+      setFormErrors(
+        validationResult.error.errors.map((err) => err.message).join(', ')
+      );
+      return;
+    }
+
+    // Если валидация успешна, отправляем данные в стор
     try {
-      addRequest(formData);
-
-      const response = await fetch('http://localhost:5174/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setIsSuccess(true);
-      } else {
-        setIsSuccess(false);
-      }
-
-      setIsModalOpen(true);
-
-      setFormData({
-        name: '',
-        email: '',
-        description: '',
-        contactMethod: '',
-      });
+      await addRequest(formData);
+      setIsSuccess(true);
     } catch (error) {
       console.error('Ошибка при отправке:', error);
       setIsSuccess(false);
-      setIsModalOpen(true);
     }
+
+    setIsModalOpen(true);
+
+    setFormData({
+      name: '',
+      email: '',
+      description: '',
+      contactMethod: '',
+    });
   };
 
   const handleClose = () => {
@@ -117,6 +124,8 @@ export default function ContactForm() {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            error={!!formErrors}
+            helperText={formErrors}
             slotProps={{
               inputLabel: {
                 style: { color: '#ffffff80' },
@@ -137,6 +146,8 @@ export default function ContactForm() {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            error={!!formErrors}
+            helperText={formErrors}
             slotProps={{
               inputLabel: {
                 style: { color: '#ffffff80' },

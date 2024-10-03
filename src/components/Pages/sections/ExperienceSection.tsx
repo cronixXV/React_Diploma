@@ -1,5 +1,6 @@
 import Grid2 from '@mui/material/Grid2';
 import { Box, Container, Typography, Stack } from '@mui/material';
+
 import CodeIcon from '../../../media/icons/others/CodeIcon.svg';
 import ProjectIcon from '../../../media/icons/projects/ProjectsIcon.svg';
 import DesignIcon from '../../../media/icons/design/DesignIcon2.svg';
@@ -16,7 +17,7 @@ export default function ExperienceSection() {
     >
       <Grid2
         container
-        spacing={2}
+        spacing={{ xs: 2, md: 10, lg: 2 }}
         sx={{
           width: '100%',
           justifyContent: 'center',
@@ -144,6 +145,7 @@ export default function ExperienceSection() {
 
         <Stack
           sx={{
+            display: { xs: 'none', lg: 'flex' },
             flexDirection: 'row',
             alignItems: 'center',
             borderRadius: '16px',

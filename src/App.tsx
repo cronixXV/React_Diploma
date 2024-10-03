@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { Stack, Box } from '@mui/material';
 import { mainLandingTheme } from './theme/mainLandingTheme';
+
 import HeaderSection from './components/pages/sections/HeaderSection';
 import MainSection from './components/pages/sections/MainSection';
 import ExperienceSection from './components/pages/sections/ExperienceSection';
@@ -14,7 +15,8 @@ import FeedbackSection from './components/pages/sections/FeedbackSection';
 import FooterSection from './components/pages/sections/FooterSection';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AdminPanelPage from './components/pages/AdmilPanelPage';
+import { AuthProvider } from './components/contexts/AuthContext';
+import AdminRoutes from './components/routers/routes/AdminRoutes';
 
 function MainContent() {
   return (
@@ -41,11 +43,11 @@ function MainContent() {
       <Box id="recommendations">
         <ReviewsSection />
       </Box>
-      <Box id="contacts">
-        <ContactSection />
-      </Box>
       <Box id="feedback">
         <FeedbackSection />
+      </Box>
+      <Box id="contacts">
+        <ContactSection />
       </Box>
       <FooterSection />
     </Stack>
@@ -55,12 +57,14 @@ function MainContent() {
 export default function App() {
   return (
     <ThemeProvider theme={mainLandingTheme}>
-      <Router>
-        <Routes>
-          <Route path="/admin" element={<AdminPanelPage />} />
-          <Route path="/*" element={<MainContent />} />
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/admin/*" element={<AdminRoutes />} />
+            <Route path="/*" element={<MainContent />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

@@ -7,7 +7,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+
 const PORT = process.env.VITE_PORT;
+const USER = process.env.VITE_USER_GMAIL;
 const PASSOWORD = process.env.VITE_PASSWORD_GMAIL;
 
 app.use(cors());
@@ -23,7 +25,7 @@ app.post('/api/send-email', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'egruzdev14',
+      user: USER,
       pass: PASSOWORD,
     },
   });

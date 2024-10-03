@@ -1,9 +1,19 @@
 import Grid2 from '@mui/material/Grid2';
-import { Box, Container, Typography, Stack } from '@mui/material';
+import {
+  Box,
+  Container,
+  Typography,
+  Stack,
+  useMediaQuery,
+} from '@mui/material';
 
+import { mainLandingTheme } from '../../../theme/mainLandingTheme';
 import Avatar from '../../../media/icons/me/AvatarAndIcons.svg';
 
 export default function AboutmeSection() {
+  const isLargeScreen = useMediaQuery(mainLandingTheme.breakpoints.down('lg'));
+  const isSmallScreen = useMediaQuery(mainLandingTheme.breakpoints.down('md'));
+
   return (
     <Container
       sx={{
@@ -16,7 +26,7 @@ export default function AboutmeSection() {
           width: '100%',
         }}
       >
-        <Grid2 size={{ xs: 12, md: 6 }}>
+        <Grid2 size={{ xs: 12, lg: 6 }}>
           <Box
             sx={{
               marginTop: '-70px',
@@ -30,10 +40,11 @@ export default function AboutmeSection() {
           </Box>
         </Grid2>
 
-        <Grid2 size={{ xs: 12, md: 6 }}>
+        <Grid2 size={{ xs: 12, lg: 6 }}>
           <Stack
             sx={{
-              alignItems: 'flex-start',
+              alignItems: { xs: 'center', lg: 'flex-start' },
+              width: '100%',
             }}
           >
             <Box
@@ -50,29 +61,39 @@ export default function AboutmeSection() {
               <Typography variant="h5">🧐 Обо мне</Typography>
             </Box>
 
-            <Box>
-              <Typography variant="h1">
-                Егор <br /> Груздев
+            <Stack
+              sx={{
+                alignItems: { xs: 'center', lg: 'flex-start' },
+                textAlign: { xs: 'center', md: 'left' },
+              }}
+            >
+              <Typography variant="h1" mt={{ xs: 2, lg: 0 }}>
+                Егор {!isLargeScreen && <br />} Груздев
               </Typography>
               ""
               <Typography variant="subtitle1">
-                👋 Привет! Можешь написать мне. С удовольствием проконсультирую!
+                👋 Привет! Можешь написать мне.{isSmallScreen && <br />} С
+                удовольствием проконсультирую!
               </Typography>
               <br />
-              <Typography variant="subtitle1" sx={{ whiteSpace: 'nowrap' }}>
-                👨‍💻 Более 2 лет разрабатываю интерфейсы на JavaScript, React.js и
-                Typescript.
+              <Typography
+                variant="subtitle1"
+                sx={{ whiteSpace: { xs: 'none', lg: 'nowrap' } }}
+              >
+                👨‍💻 Более 2 лет разрабатываю интерфейсы {isSmallScreen && <br />}{' '}
+                на JavaScript, React.js и Typescript.
               </Typography>
+              {isSmallScreen && <br />}
               <Typography variant="subtitle1">
-                💡 Интересуюсь веб-разработкой на JavaScript, TypeScript,
-                React.js и UX/UI.
+                💡 Интересуюсь веб-разработкой на JavaScript,{' '}
+                {isSmallScreen && <br />} TypeScript, React.js.
               </Typography>
               <br />
               <Typography variant="subtitle1">
-                🚀 Постоянно развиваюсь и каждый день стараюсь становиться
-                лучше.
+                🚀 Постоянно развиваюсь и каждый день {isSmallScreen && <br />}{' '}
+                стараюсь становиться лучше.
               </Typography>
-            </Box>
+            </Stack>
           </Stack>
         </Grid2>
       </Grid2>

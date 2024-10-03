@@ -8,6 +8,7 @@ import {
   CardContent,
   Link,
 } from '@mui/material';
+
 import { useJobsAndStudyStore } from '../../../store/JobsAndStudyStore';
 
 export default function JobsAndStudySection() {
@@ -38,115 +39,161 @@ export default function JobsAndStudySection() {
           <Typography variant="h5">💼 Карьера</Typography>
         </Box>
 
-        <Typography variant="h1" sx={{ marginTop: '28px' }}>
+        <Typography
+          variant="h1"
+          sx={{ marginTop: '28px', whiteSpace: 'nowrap' }}
+        >
           Траектория развития
         </Typography>
       </Stack>
 
       <Stack
         sx={{
+          alignItems: 'center',
           justifyContent: 'center',
           width: '100%',
           marginTop: '50px',
         }}
       >
-        <Grid2 container spacing={4} sx={{ width: '100%' }}>
+        <Grid2
+          container
+          spacing={{ xs: 2, md: 2, lg: 2 }}
+          sx={{ width: '100%' }}
+        >
           <Grid2 size={{ xs: 12, md: 6 }}>
             <Typography variant="h2">Мои работы</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Typography variant="h3" mt={'8px'}>
+                2024 · Настоящее время
+              </Typography>
+            </Box>
 
-            <Typography variant="h3" mt={'8px'}>
-              2024 · Настоящее время
-            </Typography>
-            {jobs.map((job, index) => (
-              <Card
-                key={index}
-                sx={{
-                  width: '540px',
-                  height: '220px',
-                  mt: '64px',
-                  '&:hover': {
-                    backgroundColor: 'rgba(123, 74, 226, 0.10)',
-                  },
-                }}
-              >
-                <CardContent>
-                  <Link href={job.url} target="_blank" underline="none">
+            <Box
+              sx={{
+                display: { xs: 'flex', md: 'block' },
+                overflowX: { xs: 'auto', md: 'unset' },
+                gap: '20px',
+                padding: { xs: '20px', md: 0 },
+                justifyContent: { xs: 'flex-start', md: 'initial' },
+                scrollSnapType: { xs: 'x mandatory', md: 'none' },
+                scrollbarWidth: 'none',
+                '&::-webkit-scrollbar': {
+                  display: 'none',
+                },
+              }}
+            >
+              {jobs.map((job, index) => (
+                <Card
+                  key={index}
+                  sx={{
+                    flexShrink: 0,
+                    scrollSnapAlign: { xs: 'start', md: 'none' },
+                    width: { xs: '280px', md: '285px', lg: '545px' },
+                    height: { xs: '330px', md: '410px', lg: '220px' },
+                    mt: { xs: '0px', md: '64px' },
+                    '&:hover': {
+                      backgroundColor: 'rgba(123, 74, 226, 0.10)',
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Link href={job.url} target="_blank" underline="none">
+                      <Typography
+                        variant="h5"
+                        color="white"
+                        textAlign={'start'}
+                        sx={{
+                          '&:hover': {
+                            fontWeight: 800,
+                          },
+                        }}
+                      >
+                        {job.title}
+                      </Typography>
+                    </Link>
+                    <Typography variant="subtitle1" mt={'8px'}>
+                      {job.description}
+                    </Typography>
                     <Typography
                       variant="h5"
-                      color="white"
-                      textAlign={'start'}
-                      sx={{
-                        '&:hover': {
-                          fontWeight: 800,
-                        },
-                      }}
+                      mt={'40px'}
+                      fontWeight={400}
+                      textAlign={'end'}
                     >
-                      {job.title}
+                      {job.date}
                     </Typography>
-                  </Link>
-                  <Typography variant="subtitle1" mt={'8px'}>
-                    {job.description}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    mt={'40px'}
-                    fontWeight={400}
-                    textAlign={'end'}
-                  >
-                    {job.date}
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </Box>
           </Grid2>
 
           <Grid2 size={{ xs: 12, md: 6 }}>
             <Typography variant="h2">Мое обучение</Typography>
-            <Typography variant="h3" mt={'8px'}>
-              2021 · Настоящее время
-            </Typography>
-            {studies.map((study, index) => (
-              <Card
-                key={index}
-                sx={{
-                  width: '540px',
-                  height: '220px',
-                  mt: '64px',
-                  '&:hover': {
-                    backgroundColor: 'rgba(123, 74, 226, 0.10)',
-                  },
-                }}
-              >
-                <CardContent>
-                  <Link href={study.url} target="_blank" underline="none">
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Typography variant="h3" mt={'8px'}>
+                2021 · Настоящее время
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: { xs: 'flex', md: 'block' }, //
+                overflowX: { xs: 'auto', md: 'unset' },
+                gap: '20px',
+                padding: { xs: '20px', md: 0 },
+                justifyContent: { xs: 'flex-start', md: 'initial' },
+                scrollSnapType: { xs: 'x mandatory', md: 'none' },
+                scrollbarWidth: 'none',
+                '&::-webkit-scrollbar': {
+                  display: 'none',
+                },
+              }}
+            >
+              {studies.map((study, index) => (
+                <Card
+                  key={index}
+                  sx={{
+                    flexShrink: 0,
+                    scrollSnapAlign: { xs: 'start', md: 'none' },
+                    width: { xs: '280px', md: '285px', lg: '545px' },
+                    height: { xs: '330px', md: '410px', lg: '220px' },
+                    mt: { xs: '0px', md: '64px' },
+                    '&:hover': {
+                      backgroundColor: 'rgba(123, 74, 226, 0.10)',
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Link href={study.url} target="_blank" underline="none">
+                      <Typography
+                        variant="h5"
+                        color="white"
+                        textAlign={'start'}
+                        sx={{
+                          '&:hover': {
+                            fontWeight: 800,
+                          },
+                        }}
+                      >
+                        {study.title}
+                      </Typography>
+                    </Link>
+                    <Typography variant="subtitle1" mt={'8px'}>
+                      {study.description}
+                    </Typography>
                     <Typography
                       variant="h5"
-                      color="white"
-                      textAlign={'start'}
-                      sx={{
-                        '&:hover': {
-                          fontWeight: 800,
-                        },
-                      }}
+                      mt={'40px'}
+                      fontWeight={400}
+                      textAlign={'end'}
                     >
-                      {study.title}
+                      {study.date}
                     </Typography>
-                  </Link>
-
-                  <Typography variant="subtitle1" mt={'8px'}>
-                    {study.description}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    mt={'40px'}
-                    fontWeight={400}
-                    textAlign={'end'}
-                  >
-                    {study.date}
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </Box>
           </Grid2>
         </Grid2>
       </Stack>

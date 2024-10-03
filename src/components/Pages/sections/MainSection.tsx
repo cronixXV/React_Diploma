@@ -1,17 +1,25 @@
 import Grid2 from '@mui/material/Grid2';
-import { Box, Container, Typography, Stack, Link } from '@mui/material';
+import {
+  Box,
+  Container,
+  Typography,
+  Stack,
+  Link,
+  useMediaQuery,
+} from '@mui/material';
 
 import GitHub from '../../../media/icons/contact/github.svg';
 import Avatar from '../../../media/icons/me/AvatarAndIcons.svg';
 import ArrowDown from '../../../media/icons/others/ArrowLineDown.svg';
 import { SiTelegram } from 'react-icons/si';
 import { FaSquareGitlab } from 'react-icons/fa6';
+import { mainLandingTheme } from '../../../theme/mainLandingTheme';
 
 export default function MainSection() {
+  const isLargeScreen = useMediaQuery(mainLandingTheme.breakpoints.down('lg'));
   return (
     <Container
       sx={{
-        marginTop: '50px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -21,14 +29,14 @@ export default function MainSection() {
         container
         spacing={2}
         sx={{
-          minHeight: 'calc(100vh - 50px)',
+          minHeight: 'calc(100vh - 100px)',
           height: '100%',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        <Grid2 size={{ xs: 12, md: 4 }}>
-          <Stack sx={{ alignItems: 'flex-start' }}>
+        <Grid2 size={{ xs: 12, lg: 4 }}>
+          <Stack sx={{ alignItems: { xs: 'center', lg: 'flex-start' } }}>
             <Box
               sx={{
                 borderRadius: '16px',
@@ -49,7 +57,7 @@ export default function MainSection() {
               }}
             >
               <Typography variant="h1">
-                Егор <br /> Груздев
+                Егор {!isLargeScreen && <br />} Груздев
               </Typography>
             </Box>
 
@@ -96,7 +104,7 @@ export default function MainSection() {
             </Box>
           </Stack>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 4 }}>
+        <Grid2 size={{ xs: 12, lg: 4 }}>
           <Box
             sx={{
               display: 'flex',
@@ -104,15 +112,22 @@ export default function MainSection() {
               justifyContent: 'center',
             }}
           >
-            <img
-              src={Avatar}
-              alt="Avatar"
-              style={{ width: '555px', height: '600px' }}
-            />
+            <Box
+              sx={{
+                width: { xs: '285px', sm: '400px', md: '555px', lg: '555px' }, //'555px',
+                height: { xs: '308px', sm: '440px', md: '600px', lg: '600px' }, //'600px',
+              }}
+            >
+              <img
+                src={Avatar}
+                alt="Avatar"
+                style={{ width: '100%', height: '100%' }}
+              />
+            </Box>
           </Box>
         </Grid2>
-        <Grid2 size={{ xs: 12, md: 4 }}>
-          <Stack sx={{ alignItems: 'flex-end' }}>
+        <Grid2 size={{ xs: 12, lg: 4 }}>
+          <Stack sx={{ alignItems: { xs: 'center', lg: 'flex-end' } }}>
             <Box mb={'9px'}>
               <Link
                 href="#"
@@ -138,16 +153,24 @@ export default function MainSection() {
                   sx={{
                     fontFamily: 'Raleway',
                     fontWeight: '600',
-                    fontSize: '16px',
+                    fontSize: { lg: '16px', md: '28px' },
                   }}
                 >
                   Скачать резюме
                 </Typography>
-                <img
-                  src={ArrowDown}
-                  alt="Arrow Down"
-                  style={{ marginLeft: '8px' }}
-                />
+                <Box
+                  sx={{
+                    display: { lg: 'initial', md: 'none' },
+                  }}
+                >
+                  <img
+                    src={ArrowDown}
+                    alt="Arrow Down"
+                    style={{
+                      marginLeft: '8px',
+                    }}
+                  />
+                </Box>
               </Link>
             </Box>
 
@@ -156,9 +179,9 @@ export default function MainSection() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 border: '1px solid rgba(123, 74, 226, 0.5)',
-                borderRadius: '16px',
-                width: '253px',
-                height: '44px',
+                borderRadius: { lg: '16px', md: '24px', sm: '12px', xs: '8px' },
+                width: { lg: '253px', md: '400px', sm: '240px', xs: '220px' },
+                height: { lg: '44px', md: '78px', sm: '40px', xs: '35px' },
                 '&:hover': {
                   borderColor: '#7B4AE2',
                   '& .MuiLink-root': {
@@ -189,14 +212,14 @@ export default function MainSection() {
                   sx={{
                     fontFamily: 'Raleway',
                     fontWeight: '600',
-                    fontSize: '16px',
+                    fontSize: { lg: '16px', md: '28px' },
                   }}
                 >
                   Написать в телеграм
                 </Typography>
 
                 <SiTelegram
-                  size={22}
+                  size={isLargeScreen ? 28 : 22}
                   color="rgba(123, 74, 226, 0.5)"
                   style={{ marginLeft: '8px' }}
                 />
