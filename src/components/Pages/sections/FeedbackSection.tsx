@@ -15,7 +15,6 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { useRequestStore } from '../../../store/RequestsStore';
 
-//форма валидации zod
 const formSchema = z.object({
   name: z.string().min(3, 'Имя обязательно'),
   email: z.string().email('Неверный формат email'),
@@ -56,9 +55,8 @@ export default function ContactForm() {
       return;
     }
 
-    // Если валидация успешна, отправляем данные в стор
     try {
-      await addRequest(formData);
+      addRequest(formData);
       setIsSuccess(true);
     } catch (error) {
       console.error('Ошибка при отправке:', error);

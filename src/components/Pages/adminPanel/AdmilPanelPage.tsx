@@ -7,7 +7,7 @@ import JobsAndStudyAdmin from './JobsAndStudyAdmin';
 import RequestsAdmin from './RequestsAdmin';
 import ProjectsAdmin from './ProjectsAdmin';
 import ReviewsAdmin from './ReviewsAdmin';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../../ constants/useAuth';
 
 const StyledContainer = styled(Container)(() => ({
   marginTop: '50px',

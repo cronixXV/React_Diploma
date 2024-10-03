@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../../ constants/useAuth';
 
 import {
   Dialog,
@@ -18,7 +18,7 @@ interface PasswordModalProps {
   onClose: () => void;
 }
 
-const ADMINPASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 export default function AdminPasswordModal({
   open,
@@ -30,7 +30,7 @@ export default function AdminPasswordModal({
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    if (password === ADMINPASSWORD) {
+    if (password === ADMIN_PASSWORD) {
       login(password);
       onClose();
       navigate('/admin');

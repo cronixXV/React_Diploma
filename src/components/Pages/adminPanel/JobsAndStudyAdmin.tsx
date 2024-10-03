@@ -8,47 +8,11 @@ import {
   Typography,
   TextField,
   IconButton,
-  Modal,
-  Fade,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
+
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const StyledTextField = styled(TextField)(() => ({
-  '& .MuiInputBase-root': {
-    color: '#ffffff',
-  },
-  '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: '#ffffff80',
-  },
-  '&:hover .MuiOutlinedInput-notchedOutline': {
-    borderColor: '#ffffff80',
-  },
-  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: '#ffffff80',
-  },
-  '& .MuiInputLabel-root': {
-    color: '#ffffff80',
-  },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: '#ffffff80',
-  },
-  '& .MuiInputLabel-root.MuiInputLabel-shrink': {
-    color: '#ffffff80',
-  },
-}));
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import AdminConfirmModal from '../modals/AdminConfirmModal';
 
 export default function JobsAndStudyAdmin() {
   const { jobs, studies, addJob, addStudy, removeJob, removeStudy } =
@@ -70,12 +34,11 @@ export default function JobsAndStudyAdmin() {
   });
 
   const [openConfirm, setOpenConfirm] = useState(false);
-  const [openStatus, setOpenStatus] = useState(false);
+
   const [itemToDelete, setItemToDelete] = useState<{
     id: number;
     type: 'job' | 'study';
   } | null>(null);
-  const [statusMessage, setStatusMessage] = useState('');
 
   const handleAddJob = () => {
     addJob({ ...newJob, id: jobs.length + 1 });
@@ -89,14 +52,12 @@ export default function JobsAndStudyAdmin() {
 
   const handleRemoveJob = (id: number) => {
     removeJob(id);
-    setStatusMessage('Работа успешно удалена');
-    setOpenStatus(true);
+    setOpenConfirm(false);
   };
 
   const handleRemoveStudy = (id: number) => {
     removeStudy(id);
-    setStatusMessage('Обучение успешно удалено');
-    setOpenStatus(true);
+    setOpenConfirm(false);
   };
 
   const handleOpenConfirm = (item: { id: number; type: 'job' | 'study' }) => {
@@ -107,11 +68,6 @@ export default function JobsAndStudyAdmin() {
   const handleCloseConfirm = () => {
     setOpenConfirm(false);
     setItemToDelete(null);
-  };
-
-  const handleCloseStatus = () => {
-    setOpenStatus(false);
-    setStatusMessage('');
   };
 
   const handleConfirmDelete = () => {
@@ -135,24 +91,29 @@ export default function JobsAndStudyAdmin() {
         <Typography variant="h3" mt={4} mb={4}>
           Добавить новую работу:
         </Typography>
-        <StyledTextField
+
+        <TextField
+          className="adminTextField"
           label="Название"
           value={newJob.title}
           onChange={(e) => setNewJob({ ...newJob, title: e.target.value })}
         />
-        <StyledTextField
+        <TextField
+          className="adminTextField"
           label="Описание"
           value={newJob.description}
           onChange={(e) =>
             setNewJob({ ...newJob, description: e.target.value })
           }
         />
-        <StyledTextField
+        <TextField
+          className="adminTextField"
           label="Дата"
           value={newJob.date}
           onChange={(e) => setNewJob({ ...newJob, date: e.target.value })}
         />
-        <StyledTextField
+        <TextField
+          className="adminTextField"
           label="URL"
           value={newJob.url}
           onChange={(e) => setNewJob({ ...newJob, url: e.target.value })}
@@ -184,24 +145,28 @@ export default function JobsAndStudyAdmin() {
         <Typography variant="h3" mt={4} mb={4}>
           Добавить новое обучение:
         </Typography>
-        <StyledTextField
+        <TextField
+          className="adminTextField"
           label="Название"
           value={newStudy.title}
           onChange={(e) => setNewStudy({ ...newStudy, title: e.target.value })}
         />
-        <StyledTextField
+        <TextField
+          className="adminTextField"
           label="Описание"
           value={newStudy.description}
           onChange={(e) =>
             setNewStudy({ ...newStudy, description: e.target.value })
           }
         />
-        <StyledTextField
+        <TextField
+          className="adminTextField"
           label="Дата"
           value={newStudy.date}
           onChange={(e) => setNewStudy({ ...newStudy, date: e.target.value })}
         />
-        <StyledTextField
+        <TextField
+          className="adminTextField"
           label="URL"
           value={newStudy.url}
           onChange={(e) => setNewStudy({ ...newStudy, url: e.target.value })}
@@ -287,101 +252,39 @@ export default function JobsAndStudyAdmin() {
         ))}
       </Box>
 
-      <Modal
+      <AdminConfirmModal
         open={openConfirm}
         onClose={handleCloseConfirm}
-        closeAfterTransition
+        title="Подтверждение удаления"
+        description="Вы уверены, что хотите удалить этот элемент?"
       >
-        <Fade in={openConfirm}>
-          <Box sx={style}>
-            <Typography variant="h6" component="h2">
-              Подтверждение удаления
-            </Typography>
-            <Typography sx={{ mt: 2 }}>
-              Вы уверены, что хотите удалить этот элемент?
-            </Typography>
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                gap: 2,
-                mt: 4,
-              }}
-            >
-              <Button
-                onClick={handleCloseConfirm}
-                sx={{
-                  backgroundColor: '#090E16',
-                  color: 'white',
-                  borderRadius: '16px',
-                  '&:hover': {
-                    backgroundColor: '#7B4AE2',
-                    '& .MuiLink-root': {
-                      color: '#7B4AE2',
-                      '& .MuiTypography-root': {
-                        color: '#7B4AE2',
-                      },
-                    },
-                  },
-                }}
-              >
-                Отмена
-              </Button>
-              <Button
-                onClick={handleConfirmDelete}
-                sx={{
-                  backgroundColor: '#090E16',
-                  color: 'white',
-                  borderRadius: '16px',
-                  '&:hover': {
-                    backgroundColor: '#7B4AE2',
-                    '& .MuiLink-root': {
-                      color: '#7B4AE2',
-                      '& .MuiTypography-root': {
-                        color: '#7B4AE2',
-                      },
-                    },
-                  },
-                }}
-              >
-                Удалить
-              </Button>
-            </Stack>
-          </Box>
-        </Fade>
-      </Modal>
-
-      <Modal open={openStatus} onClose={handleCloseStatus} closeAfterTransition>
-        <Fade in={openStatus}>
-          <Box sx={style}>
-            <Typography variant="h6" component="h2">
-              Статус удаления
-            </Typography>
-            <Typography sx={{ mt: 2 }}>{statusMessage}</Typography>
-            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-              <Button
-                onClick={handleCloseStatus}
-                sx={{
-                  backgroundColor: '#090E16',
-                  color: 'white',
-                  borderRadius: '16px',
-                  '&:hover': {
-                    backgroundColor: '#7B4AE2',
-                    '& .MuiLink-root': {
-                      color: '#7B4AE2',
-                      '& .MuiTypography-root': {
-                        color: '#7B4AE2',
-                      },
-                    },
-                  },
-                }}
-              >
-                Закрыть
-              </Button>
-            </Box>
-          </Box>
-        </Fade>
-      </Modal>
+        <Button
+          onClick={handleCloseConfirm}
+          sx={{
+            backgroundColor: '#090E16',
+            color: 'white',
+            borderRadius: '16px',
+            '&:hover': {
+              backgroundColor: '#7B4AE2',
+            },
+          }}
+        >
+          Отмена
+        </Button>
+        <Button
+          onClick={handleConfirmDelete}
+          sx={{
+            backgroundColor: '#090E16',
+            color: 'white',
+            borderRadius: '16px',
+            '&:hover': {
+              backgroundColor: '#7B4AE2',
+            },
+          }}
+        >
+          Удалить
+        </Button>
+      </AdminConfirmModal>
     </Stack>
   );
 }

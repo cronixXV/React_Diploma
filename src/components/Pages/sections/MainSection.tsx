@@ -114,8 +114,8 @@ export default function MainSection() {
           >
             <Box
               sx={{
-                width: { xs: '285px', sm: '400px', md: '555px', lg: '555px' }, //'555px',
-                height: { xs: '308px', sm: '440px', md: '600px', lg: '600px' }, //'600px',
+                width: { xs: '285px', sm: '400px', md: '555px', lg: '555px' },
+                height: { xs: '308px', sm: '440px', md: '600px', lg: '600px' },
               }}
             >
               <img

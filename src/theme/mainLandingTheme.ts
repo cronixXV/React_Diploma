@@ -112,9 +112,6 @@ export const mainLandingTheme = createTheme({
       fontSize: '16px',
       fontWeight: 400,
       color: textGrey,
-      // [breakpoints.breakpoints.down('lg')]: {
-      //   fontSize: '12px',
-      // },
       [breakpoints.breakpoints.down('md')]: {
         fontSize: '14px',
       },
@@ -196,6 +193,35 @@ export const mainLandingTheme = createTheme({
             padding: '24px',
           },
         }),
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '&.adminTextField': {
+            '& .MuiInputBase-root': {
+              color: '#ffffff',
+            },
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ffffff80',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ffffff80',
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ffffff80',
+            },
+            '& .MuiInputLabel-root': {
+              color: '#ffffff80',
+            },
+            '& .MuiInputLabel-root.Mui-focused': {
+              color: '#ffffff80',
+            },
+            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+              color: '#ffffff80',
+            },
+          },
+        },
       },
     },
   },
