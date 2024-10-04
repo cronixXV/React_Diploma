@@ -26,34 +26,6 @@ declare module '@mui/material/Button' {
   }
 }
 
-// declare module '@mui/material/styles' {
-//   interface TypographyVariants {
-//     subtitle1: React.CSSProperties;
-//     subtitle2: React.CSSProperties;
-//     h1: React.CSSProperties;
-//     h2: React.CSSProperties;
-//     h3: React.CSSProperties;
-//   }
-
-//   interface TypographyVariantsOptions {
-//     subtitle1: React.CSSProperties;
-//     subtitle2: React.CSSProperties;
-//     h1: React.CSSProperties;
-//     h2: React.CSSProperties;
-//     h3: React.CSSProperties;
-//   }
-// }
-
-// declare module '@mui/material/Typography' {
-//   interface TypographyPropsVariantOverrides {
-//     subtitle1: true;
-//     subtitle2: true;
-//     h1: true;
-//     h2: true;
-//     h3: true;
-//   }
-// }
-
 export const mainLandingTheme = createTheme({
   ...breakpoints,
   palette: {
@@ -72,7 +44,7 @@ export const mainLandingTheme = createTheme({
       fontSize: '48px',
       lineHeight: '120%',
       [breakpoints.breakpoints.down('md')]: {
-        fontSize: '24px',
+        fontSize: '34px',
       },
     },
     h2: {
@@ -93,7 +65,7 @@ export const mainLandingTheme = createTheme({
       textAlign: 'center',
       color: textGrey,
       [breakpoints.breakpoints.down('md')]: {
-        fontSize: '14px',
+        fontSize: '18px',
         textAlign: 'justify',
       },
     },
@@ -103,12 +75,38 @@ export const mainLandingTheme = createTheme({
       fontSize: '18px',
       textAlign: 'center',
       color: textGrey,
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        bottom: '-6px',
+        left: 0,
+        width: '100%',
+        height: '3px',
+        backgroundColor: 'rgba(123, 74, 226, 0.5)',
+        transform: 'scale(0, 1)',
+        transition: 'transform .3s ease',
+      },
+      '&:hover::before': {
+        transform: 'scale(1, 1)',
+      },
       '&:hover': {
         fontWeight: 700,
         color: textViolet,
         transition: 'all .3s ease-in-out',
       },
     },
+    h5: {
+      fontFamily: 'Raleway',
+      fontWeight: '700',
+      fontSize: '20px',
+      textAlign: 'center',
+      color: 'rgba(123, 74, 226, 0.5)',
+      [breakpoints.breakpoints.down('md')]: {
+        fontSize: '18px',
+      },
+    },
+
     subtitle1: {
       fontFamily: 'Raleway',
       fontSize: '16px',
@@ -195,6 +193,35 @@ export const mainLandingTheme = createTheme({
             padding: '24px',
           },
         }),
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '&.adminTextField': {
+            '& .MuiInputBase-root': {
+              color: '#ffffff',
+            },
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ffffff80',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ffffff80',
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#ffffff80',
+            },
+            '& .MuiInputLabel-root': {
+              color: '#ffffff80',
+            },
+            '& .MuiInputLabel-root.Mui-focused': {
+              color: '#ffffff80',
+            },
+            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+              color: '#ffffff80',
+            },
+          },
+        },
       },
     },
   },

@@ -1,16 +1,23 @@
 import { ThemeProvider } from '@mui/material/styles';
-import { Stack } from '@mui/material';
-import { mainLandingTheme } from './theme/mainLandingTheme';
-import HeaderSection from './components/Pages/HeaderSection';
 
-function App() {
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './components/contexts/AuthContext';
+import AdminRoutes from './components/routers/routes/AdminRoutes';
+
+import MainContent from './components/layouts/MainContent';
+import { mainLandingTheme } from './theme/mainLandingTheme';
+
+export default function App() {
   return (
     <ThemeProvider theme={mainLandingTheme}>
-      <Stack width={'100%'} gap={'40px'}>
-        <HeaderSection />
-      </Stack>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/admin/*" element={<AdminRoutes />} />
+            <Route path="/*" element={<MainContent />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
-
-export default App;
