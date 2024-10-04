@@ -1,50 +1,88 @@
-# React + TypeScript + Vite
+# Проект: Admin Panel & Portfolio Website with Admin Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Главная страница приложения](./scrin1.png)
 
-Currently, two official plugins are available:
+## Описание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Этот проект представляет собой портфолио веб-сайт с административной панелью для управления контентом. Он построен на React с использованием TypeScript и Zustand для управления состоянием. Административная панель позволяет добавлять, редактировать и удалять контент, такой как проекты, карьерные достижения, отзывы и запросы.
 
-## Expanding the ESLint configuration
+## Стек технологий
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Frontend:
 
-- Configure the top-level `parserOptions` property like this:
+React с TypeScript
+Zustand для управления состоянием
+MUI для компонентной библиотеки и стилизации
+React Router для навигации
+Zod для валидации форм
+React Hook Form для работы с формами
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Backend:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Express для серверной части
+Nodemailer для отправки email
+uuid для генерации уникальных идентификаторов
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Основные функции
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Пользовательская часть:
+
+Отображение портфолио проектов, а так же основной информации обо мне
+Форма отправки заявки (с отправкой данных на сервер)
+Адаптивная верстка для мобильных устройств
+
+Административная панель:
+
+![Админ-панель](./scrin2.png)
+
+Раздел "Проекты": Добавление, редактирование и удаление проектов
+Раздел "Карьера": Управление карьерными записями и учебными достижениями
+Раздел "Отзывы": Просмотр и удаление отзывов
+Раздел "Запросы": Просмотр и удаление запросов, отправленных через контактную форму
+Защищенный вход с использованием пароля для доступа в админ-панель
+
+## Установка
+
+Клонируйте репозиторий:
+
+git clone https://github.com/cronixXV/React_Diploma
+
+Установите зависимости:
+
+cd react-diploma
+npm install
+
+Создайте файл .env и укажите следующие переменные окружения:
+
+VITE_ADMIN_PASSWORD=ваш-пароль
+
+Запустите проект:
+
+npm run dev
+
+Для запуска серверной части:
+
+npm run start:server
+
+## Использование
+
+Административная панель
+Для доступа к административной панели введите пароль, указанный в переменной окружения VITE_ADMIN_PASSWORD.
+
+Проекты: Добавляйте новые проекты, редактируйте существующие и удаляйте их при необходимости.
+Карьера: Управляйте вашими записями о работе и учебе.
+Отзывы: Просматривайте отзывы пользователей и удаляйте ненужные.
+Запросы: Просматривайте заявки, отправленные через контактную форму, и удаляйте обработанные запросы.
+
+Портфолио
+Просмотрите проекты, отзывы, а также отправьте заявку на сотрудничество через форму обратной связи.
+
+## Скрипты
+
+npm run dev — запуск проекта в режиме разработки
+npm run build — сборка проекта для продакшн
+npm run server — запуск серверной части
+
+# Лицензия
+
+![GitHub](https://img.shields.io/github/license/iwebexpert/js-junior-nodejs-api)
