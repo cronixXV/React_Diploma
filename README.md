@@ -1,4 +1,4 @@
-# Проект: Admin Panel & Portfolio Website with Admin Panel
+# Проект: Portfolio Website with Admin Panel
 
 ![Главная страница приложения](./scrin1.png)
 
