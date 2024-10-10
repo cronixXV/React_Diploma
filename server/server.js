@@ -33,7 +33,7 @@ app.post('/api/send-email', (req, res) => {
   const mailOptions = {
     from: 'email',
     to: 'egruzdev14@gmail.com',
-    subject: 'New message from cronix1405@yandex.ru',
+    subject: 'New message from  feedback form',
     text: `Name: ${name}\nEmail: ${email}\nDescription: ${description}\nContact method: ${contactMethod}`,
   };
 
