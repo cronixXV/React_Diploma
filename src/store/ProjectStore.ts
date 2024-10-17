@@ -34,7 +34,7 @@ export const useProjectStore = create<ProjectState>((set) => ({
         'Склад и финансы в облаке для селлеров на Wildberries и Ozon',
       technologies: ['TS', 'React', 'Redux', 'MUI', 'NGINX'],
       imageUrl: ProjectExample9,
-      link: 'https://mp.tools/',
+      link: 'https://tvoysklad.online/',
     },
     {
       id: 2,

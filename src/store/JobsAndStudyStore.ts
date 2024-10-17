@@ -33,7 +33,7 @@ export const useJobsAndStudyStore = create<JobsAndStudyStore>((set) => ({
       description:
         'Должность: Frontend Developer. Разработка нового функционала для веб-приложения с использованием React, JavaScript, Typescript, Redux. Верстка с использованием MUI',
       date: 'Апрель/2024 · Настоящее время',
-      url: 'https://mp.tools/',
+      url: 'https://tvoysklad.online/',
     },
     {
       id: 2,

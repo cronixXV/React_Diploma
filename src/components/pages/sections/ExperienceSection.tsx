@@ -56,7 +56,7 @@ export default function ExperienceSection() {
                   color: '#fff',
                 }}
               >
-                3 года
+                1.5 года
               </Typography>
               <Typography variant="h2">Разработчик</Typography>
             </Box>
@@ -96,7 +96,7 @@ export default function ExperienceSection() {
                   color: '#fff',
                 }}
               >
-                3 года
+                1.5 года
               </Typography>
               <Typography variant="h2">В ИТ сфере</Typography>
             </Box>

@@ -128,6 +128,9 @@ export default function ContactForm() {
               inputLabel: {
                 style: { color: '#ffffff80' },
               },
+              htmlInput: {
+                autoComplete: 'off',
+              },
             }}
             sx={{
               '& .MuiOutlinedInput-root': {
@@ -149,6 +152,9 @@ export default function ContactForm() {
             slotProps={{
               inputLabel: {
                 style: { color: '#ffffff80' },
+              },
+              htmlInput: {
+                autoComplete: 'off',
               },
             }}
             sx={{
@@ -172,6 +178,9 @@ export default function ContactForm() {
               inputLabel: {
                 style: { color: '#ffffff80' },
               },
+              htmlInput: {
+                autoComplete: 'off',
+              },
             }}
             sx={{
               '& .MuiOutlinedInput-root': {
@@ -191,6 +200,9 @@ export default function ContactForm() {
             slotProps={{
               inputLabel: {
                 style: { color: '#ffffff80' },
+              },
+              htmlInput: {
+                autoComplete: 'off',
               },
             }}
             sx={{

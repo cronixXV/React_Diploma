@@ -164,9 +164,9 @@ export default function ReviewsSection() {
                     {review.description}
                   </Typography>
 
-                  <Box>
+                  {/* <Box>
                     <img src={review.imageUrl} alt={review.name} />
-                  </Box>
+                  </Box> */}
 
                   <Stack mt={'21px'} alignItems={'flex-end'} width={'100%'}>
                     <Typography variant="h5" sx={{ color: '#fff' }}>

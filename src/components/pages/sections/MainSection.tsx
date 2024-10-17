@@ -14,6 +14,7 @@ import ArrowDown from '../../../media/icons/others/ArrowLineDown.svg';
 import { SiTelegram } from 'react-icons/si';
 import { FaSquareGitlab } from 'react-icons/fa6';
 import { mainLandingTheme } from '../../../theme/mainLandingTheme';
+import resumeFile from '../../../media/resume/resumeFile.pdf';
 
 export default function MainSection() {
   const isLargeScreen = useMediaQuery(mainLandingTheme.breakpoints.down('lg'));
@@ -130,7 +131,8 @@ export default function MainSection() {
           <Stack sx={{ alignItems: { xs: 'center', lg: 'flex-end' } }}>
             <Box mb={'9px'}>
               <Link
-                href="#"
+                href={resumeFile}
+                download
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
